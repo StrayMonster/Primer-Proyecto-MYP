@@ -54,3 +54,55 @@ footer{
     bottom: 0;
     text-align: center;
     color:#606177;
+}
+
+titulo {
+    color: rgb(59, 48, 211);
+    text-align: center;
+    font-size: 50pt;
+    text-shadow: 5px 5px 15px #81e9fc;
+}
+
+subtitulo{
+	color: white;
+	text-align: center; 
+	font-size: 32pt;
+	text-shadow: 5px 5px 15px yellow;
+}
+
+txt{
+	color: rgb(253, 248, 248);
+	text-align: center;
+	font-size: 23pt;
+
+}
+
+.boxtitle{
+	color: green;
+	background: rgba(0, 128, 0, 0.685);
+	border: 2px solid black;
+	overflow: hidden;
+	height: 45px;
+	width: 225px;
+	display: block;
+}
+
+.boxcontent{
+	color: green;
+	background: rgba(38, 109, 38, 0.781);
+	border: 2px solid black;
+	overflow: hidden;
+	height: 250px;
+	width:800px;
+	display: inline-block;
+}
+
+.boxcontent2{
+	color: green;
+	background: rgba(38, 109, 38, 0.781);
+	border: 2px solid black;
+	overflow: hidden;
+	height: 400px;
+	width:800px;
+	display: inline-block;
+}
