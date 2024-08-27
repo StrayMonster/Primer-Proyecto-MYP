@@ -1,0 +1,56 @@
+
+main-header{
+	background: rgb(29, 103, 150);
+	height: 45px;
+	width: 100%;
+	left: 0;
+	top: 0;
+	position: fixed;
+}
+
+li{
+	float: left;
+}
+
+ul{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #4f5066;
+} 
+
+li a, .dropbtn {
+	display: inline-block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+  }
+  
+  li a:hover, .dropdown:hover .dropbtn {
+	background-color: #5895ad;
+  }
+
+click{
+	padding: 5px;
+	cursor: pointer;
+}
+
+body{
+	background: url("./Imagenes/Fondo.jpg") center center no-repeat;
+	min-height: 100%;
+	background-size: cover;
+	background-attachment: fixed;
+    background-position: auto;
+}
+
+footer{
+    position: fixed;
+    background: rgb(33, 43, 49);
+	height: 45px;
+	width: 100%;
+	left: 0;
+    bottom: 0;
+    text-align: center;
+    color:#606177;
