@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width", initial-scale="1.0">
     <link rel ="stylesheet" href="./Recursos/style.css">
+    <script src="./Recursos/funciones.js"defer></script>
     <br><br><br>
     <center><titulo> Weathering </titulo></center>
 
@@ -15,9 +16,105 @@
         </main-header>
     </ul>
 </head>
+<br>
 <body>    
     <main>
-        <br><br>
+        <center>
+        <subtitulo> Instrucciones </subtitulo><br>
+        <div class="boxcontent"> Bienvenidos a Weathering, está página proporciona el clima de las zonas solicitadas.<br>
+            Para usarla, sigue estos pasos: <br>
+            -Coloca en ambas casillas los lugares de los que deseas conocer el clima.<br>
+              *El lado izquiero es el lugar en el que te encuentras en este momento.<br>
+              *El lado derecho es el lugar al que te diriges y quieres conocer el clima.<br>
+            -Condiciones:<br>
+              *El sitio no procederá si ambas opciones son iguales.<br>
+              *El sitio no procederá si las dos opciones no están marcadas.
+        </center> <br><br>
+        <form id="FormularioClima">
+            <label for="opcion1"> Origen: </label>
+            <select id="Parametro1" name="Parametro1" onchange="validarFormulario()">
+                <option value=""> Selecciona el lugar en el que te encuentras.</option>
+                <option value="ACA"> Acapulco (ACA).</option>
+                <option value="AGU">Aguascalientes (AGU).</option>
+                <option value="CUN"> Cancún (CUN).</option>
+                <option value="MEX">Ciudad de México (MEX).</option>
+                <option value="CTM">Chetumal (CTM).</option>
+                <option value="CUU">Chihahua (CUU).</option>
+                <option value="CME">Ciudad del Cármen (CME).</option>
+                <option value="CJS">Ciudad Juarez (CJS).</option>
+                <option value="CZM">Cozumel (CZM).</option>
+                <option value="GDL">Guadalajara (GDL).</option>
+                <option value="HMO">Hermosillo (HMO).</option>
+                <option value="HUX">Huatulco (HUX).</option>
+                <option value="BJX">Leon (BJX).</option>
+                <option value="MID">Mérida (MID).</option>
+                <option value="MTY">Monterrey (MTY).</option>
+                <option value="OAX">Oaxaca (OAX).</option>
+                <option value="PBC">Puebla (PBC).</option>
+                <option value="PXM">Puerto Escondido (PXM).</option>
+                <option value="PVR">Puerto Vallarta (PVR).</option>
+                <option value="QRO">Querétaro (QRO).</option>
+                <option value="SLP">San Luis Potosí (SLP).</option>
+                <option value="TAM">Tampico (TAM).</option>
+                <option value="TIJ">Tijuana (TIJ).</option>
+                <option value="TRC">Torreon (TRC).</option>
+                <option value="TLC">Tulancingo (TLC).</option>
+                <option value="VER">Veracruz (VER).</option>
+                <option value="VSA">Villahermosa (VSA).</option>
+                <option value="ZCL">Zacatecas (ZCL).</option>
+            </select>
+            <label for="opcion2"> Destino: </label>
+            <select id="Parametro2" name="Parametro2" onchange="validarFormulario()">
+                <option value=""> Selecciona el destino. </option>
+                <option value="ACA">Acapulco (ACA).</option>
+                <option value="HVA">Analalava (HVA).</option>
+                <option value="AMX">Ámsterdam (AMX).</option>
+                <option value="ATL">Atlanta (ATL).</option>
+                <option value="BOG">Bogotá (BOG).</option>
+                <option value="CUN">Cancún (CUN).</option>
+                <option value="MEX">Ciudad de México (MEX).</option>
+                <option value="CLT">Charlotte (CLT).</option>
+                <option value="CTM">Chetumal (CTM).</option>
+                <option value="ORD">Chicago (ORD).</option>
+                <option value="BZE">Ciudad de Belice (BZE).</option>
+                <option value="CME">Ciudad del Cármen (CME).</option>
+                <option value="CJS">Ciudad Juarez (CJS).</option>
+                <option value="CEN">Ciudad Obregon (CEN).</option>
+                <option value="DFW">Dallas (DFW).</option>
+                <option value="PHL">Filadelfia (PHL).</option>
+                <option value="GDL">Guadalajara (GDL).</option>
+                <option value="HMO">Hermosillo (HMO).</option>
+                <option value="IAH">Houston (IAH).</option>
+                <option value="HUX">Huatulco (HUX).</option>
+                <option value="ZIH">Ixtapan-Zihuatanejo (ZIH).</option>
+                <option value="LIM">Lima (LIM).</option>
+                <option value="LAX">Los Ángeles(LAX).</option>
+                <option value="MAD">Madrid (MAD).</option>
+                <option value="MZT">Mazatlán (MZT).</option>
+                <option value="MID">Mérida (MID).</option>
+                <option value="MIA">Miami (MIA).</option>
+                <option value="MTY">Monterrey (MTY).</option>
+                <option value="JFK">Nueva York (JFK).</option>
+                <option value="OAX">Oaxaca (OAX).</option>
+                <option value="CDG">Paris (CDG).</option>
+                <option value="PHX">Phoenix (PHX).</option>
+                <option value="PXM">Puerto Escondido(PXM).</option>
+                <option value="PVR">Puerto Vallarta (PVR).</option>
+                <option value="SCL">Santiago (SCL).</option>
+                <option value="TAM">Tampico (TAM).</option>
+                <option value="TIJ">Tijuana (TIJ).</option>
+                <option value="TLC">Tulancingo (TLC).</option>
+                <option value="TRC">Torreón (TRC).</option>
+                <option value="YYZ">Toronto (YYZ).</option>
+                <option value="VER">Veracruz (VER).</option>
+                <option value="VSA">Villahermosa (VSA).</option>
+                <option value="YVR">Vancouver (YVR).</option>
+                <option value="ZCL">Zacatecas(ZCL).</option>
+            </select>
+            <br>
+            <button type="button" id="enviar" onclick="enviarFormulario()" disabled> Consultar </button>
+        </form>
+        
     </main>
     <footer>
         &copy; Weathering 2024. Todos los derechos reservados.<br>

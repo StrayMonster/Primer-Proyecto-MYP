@@ -64,10 +64,10 @@ titulo {
 }
 
 subtitulo{
-	color: white;
+	color: rgb(238, 231, 231);
 	text-align: center; 
 	font-size: 32pt;
-	text-shadow: 5px 5px 15px yellow;
+	text-shadow: 5px 5px 15px rgb(0, 0, 0);
 }
 
 txt{
@@ -77,24 +77,17 @@ txt{
 
 }
 
-.boxtitle{
-	color: green;
-	background: rgba(0, 128, 0, 0.685);
-	border: 2px solid black;
-	overflow: hidden;
-	height: 45px;
-	width: 225px;
-	display: block;
-}
-
 .boxcontent{
-	color: green;
-	background: rgba(38, 109, 38, 0.781);
-	border: 2px solid black;
+	box-sizing: content-box;
+	width: 900px;
+	color: rgb(49, 49, 49);
+	background: rgba(223, 226, 223, 0.781);
 	overflow: hidden;
-	height: 250px;
-	width:800px;
 	display: inline-block;
+	border-radius: 8px;
+	padding: 5px;
+	text-align: justify;
+	font-size: 25px
 }
 
 .boxcontent2{
