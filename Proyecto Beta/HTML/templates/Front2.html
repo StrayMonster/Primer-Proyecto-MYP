@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="shortcut icon" type="image.png" href="{{url_for('static', filename='Recursos/Imagenes/Icono.ico')}}"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width", initial-scale="1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='Recursos/style.css')}}">
+    <script src="{{url_for('static', filename= 'Recursos/funciones.js')}}" defer></script>
+    <br><br><br>
+    <center><titulo> Weathering </titulo></center>
+    <ul>
+        <main-header>
+            <li><img src="{{url_for('static', filename= 'Recursos/Imagenes/LogoAv.webp')}}" width="55" height="44">
+            <li><a href="{{url_for('index')}}"> Inicio </a></li>
+        </main-header>
+    </ul>
+</head>
+<body>    
+    <main>
+        <br>
+        <center><subtitulo>Resultados</subtitulo></center>
+        Resultado del Clima <br>
+        Origen: {{datos.origen}}<br>
+        Destino: {{datos.destino}}<br>
+        Latitud Origen: {{datos.origenLatitud}}<br>
+        Longitud Origen: {{datos.origenLongitud}}<br>
+        Latitud Destino: {{datos.destinoLatitud}}<br>
+        Longitud Destino:  {{datos.destinoLongitud}}<br>
+    </main>
+    <footer>
+        &copy; Weathering 2024. Todos los derechos reservados.<br>
+        Gracias por su preferencia.
+    </footer>
+</body>
+</html>
+
