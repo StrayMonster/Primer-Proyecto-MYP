@@ -1,4 +1,4 @@
-
+//Función que hace que el boton no se active hasta que las dos opciones hayan sido activadas.
 function validarFormulario(){
     const opcion1 = document.getElementById('Parametro1').value;
     const opcion2 = document.getElementById('Parametro2').value;
@@ -11,6 +11,7 @@ function validarFormulario(){
     }
 }
 
+// Función que envía una alerta si los elementos escogidos son iguales, impidiendo enviar el formulario, en otro caso continua el protocolo de procesamiento.
 function enviarFormulario(){
     const opcion1 = document.getElementById('Parametro1').value;
     const opcion2 = document.getElementById('Parametro2').value;

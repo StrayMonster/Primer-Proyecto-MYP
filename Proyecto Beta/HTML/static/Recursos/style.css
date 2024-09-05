@@ -99,3 +99,10 @@ txt{
 	width:800px;
 	display: inline-block;
 }
+
+#formularioClima{
+	padding: 5px;
+	cursor: pointer;
+	box-sizing: content-box;
+
+}
