@@ -9,7 +9,7 @@ app.secret_key = 'waos'
 
 #Vincular Base de datos con este programa:
 #Se le pide por favor que ingrese su dirección de archivo local para que funcione esté elemento.
-ubicaciones = pd.read_csv('E:/Github/Primer-Proyecto-MYP/Proyecto Beta/HTML/static/Recursos/ubicaciones.csv')
+ubicaciones = pd.read_csv('E:/Cardinal/Github/Primer-Proyecto-MYP/Proyecto Beta/HTML/static/Recursos/ubicaciones.csv')
 
 API_KEY = '644a995fb441ee0ec22ae8ff3865161f'
 
@@ -36,84 +36,77 @@ def obtener_clima(latitud, longitud):
         return None
 
 def seleccionarGif(descripcion):
-    descripcion = descripcion.lower().strip()
-    gifs = {
-        'thunderstorm with light rain': 'LluviaElectrica.gif',
-        'thunderstorm with rain': 'LluviaElectrica.gif',
-        'thunderstorm with heavy rain': 'LluviaElectrica.gif',
-        'light thunderstorm': 'LluviaElectrica.gif',
-        'thunderstorm': 'LluviaElectrica.gif',
-        'heavy thunderstorm': 'LluviaElectrica.gif',
-        'ragged thunderstorm': 'LluviaElectrica.gif',
-        'thunderstorm with light drizzle': 'LluviaElectrica.gif',
-        'thunderstorm with drizzle': 'LluviaElectrica.gif',
-        'thunderstorm with heavy drizzle': 'LluviaElectrica.gif',
+    print(f"Descripción otorgada: {descripcion}")
+    if ("thunderstorm with light rain" in descripcion or 
+        "thunderstorm with rain" in descripcion or 
+        "thunderstorm with heavy rain" in descripcion or 
+        "light thunderstorm" in descripcion or 
+        "thunderstorm" in descripcion or 
+        "heavy thunderstorm" in descripcion or 
+        "ragged thunderstorm" in descripcion or 
+        "thunderstorm with light drizzle" in descripcion or 
+        "thunderstorm with drizzle" in descripcion or 
+        "thunderstorm with heavy drizzle" in descripcion):
+        return "Recursos/Imagenes/LluviaElectrica.gif"
+    elif ("light intensity drizzle" in descripcion or 
+          "light intensity drizzle rain" in descripcion or 
+          "light rain" in descripcion):
+        return "Recursos/Imagenes/LluviaElectrica.gifLluviaLL.gif"
+    elif ("drizzle" in descripcion or
+          "drizzle rain'" in descripcion or
+          "heavy intensity drizzle rain" in descripcion or
+          "shower rain and drizzle" in descripcion or
+          "shower drizzle" in descripcion):
+        return "Recursos/Imagenes/LluviaL.gif"
+    elif  ("moderate rain" in descripcion or
+           "heavy intensity drizzle" in descripcion or
+           "heavy shower rain and drizzle" in descripcion):
+        return "Recursos/Imagenes/LluviaM.gif"
+    elif  ("very heavy rain" in descripcion or
+           "heavy intensity rain" in descripcion or
+           "extreme rain" in descripcion or
+           "light intensity shower rain" in descripcion or
+           "shower rain" in descripcion or
+           "heavy intensity shower rain" in descripcion or
+           "ragged shower rain" in descripcion):
+        return "Recursos/Imagenes/LluviaH.gif"
+    elif ("Sleet" in descripcion or
+          "Light shower sleet" in descripcion or
+          "Shower sleet" in descripcion or
+          "squalls" in descripcion or
+          "freezing rain" in descripcion):
+        return "Recursos/Imagenes/AguaNieve.gif"
+    elif ("light snow" in descripcion or
+          "Snow" in descripcion):
+        return "Recursos/Imagenes/NevandoL.gif"
+    elif ("Heavy snow" in descripcion or
+          "Light rain and snow" in descripcion or
+          "Rain and snow" in descripcion or
+          "Light shower snow" in descripcion or
+          "Shower snow" in descripcion or
+          "Heavy shower snow" in descripcion):
+        return "Recursos/Imagenes/Nevando.gif"
+    elif ("tornado" in descripcion):
+        return "Recursos/Imagenes/Tornado.gif"
+    elif ("clear sky" in descripcion):
+        return "Recursos/Imagenes/Despejado.jpg"
+    elif ("mist" in descripcion or
+          "smoke" in descripcion or
+          "haze" in descripcion or
+          "fog" in descripcion or
+          "dust" in descripcion):
+        return "Recursos/Imagenes/Neblina.gif"
+    elif ("sand" in descripcion or
+          "dust whirls" in descripcion):
+        return "Recursos/Imagenes/Arena.gif"
+    elif ("volcanic ash" in descripcion):
+        return "Recursos/Imagenes/Ceniza.gif"
+    else:
+        return "Recursos/Imagenes/Default.gif"
 
-        'light intensity drizzle': 'LluviaLL.gif',
-        'drizzle': 'LluviaL.gif',
-        'heavy intensity drizzle': 'LluviaL.gif',
-        'light intensity drizzle rain': 'LluviaLL.gif',
-        'drizzle rain': 'LluviaL.gif',
-        'heavy intensity drizzle rain': 'LluviaL.gif',
-        'shower rain and drizzle': 'LluviaL.gif',
-        'heavy shower rain and drizzle': 'LluviaL.gif',        
-        'shower drizzle': 'LluviaL.gif',
 
-        'light rain': 'LluviaLL.gif',
-        'moderate rain': 'LluviaM.gif',
-        'heavy intensity rain': 'LluviaH.gif',
-        'very heavy rain': 'LluviaH.gif',
-        'extreme rain': 'LluviaH.gif',
-        'freezing rain': 'AguaNieve.gif',
-        'light intensity shower rain': 'LluviaH.gif',
-        'shower rain': 'LluviaH.gif',
-        'heavy intensity shower rain': 'LluviaH.gif',
-        'ragged shower rain': 'LluviaH.gif',
 
-        'light snow': 'NevandoL.gif',
-        'Snow': 'NevandoL.gif',
-        'Heavy snow': 'Nevando.gif',
-        'Sleet': 'AguaNieve.gif',
-        'Light shower sleet': 'AguaNieve.gif',
-        'Shower sleet': 'AguaNieve.gif',
-        'Light rain and snow': 'Nevando.gif',
-        'Rain and snow': 'Nevando.gif',
-        'Light shower snow': 'Nevando.gif',
-        'Shower snow': 'Nevando.gif',
-        'Heavy shower snow': 'Nevando.gif',
 
-        'mist': 'Neblina.gif',
-        'smoke': 'Neblina.gif',
-        'haze': 'Neblina.gif',
-        'sand': 'Arena.gif',
-        'dust whirls': 'Arena.gif',
-        'fog': 'Neblina.gif',
-        'dust': 'Neblina.gif',
-        'volcanic ash': 'Ceniza.gif',
-        'squalls': 'AguaNieve.gif',
-        'tornado': 'Tornado.gif',
-
-        'clear sky': 'Despejado.jpg',
-    }
-
-    base_path = '/Recursos/Imagenes/'
-
-    print(f"Descripción recibida: {descripcion}")
-    for key, gif in gifs.items():
-        if key in descripcion:
-            gif_path = os.path.join(base_path, gif)
-            full_gif_path = os.path.join('static', gif_path)
-            print(f"Ruta del Gif: {gif_path}")
-            print(f"Ruta completa del gif: {full_gif_path}")
-            if os.path.exists(full_gif_path):
-                print(f"Después de verificar que exitse: {full_gif_path}")
-                return gif_path
-            else:
-                print(f"GIF no encontrado: {full_gif_path}, asignando Deafult")
-                return os.path.join(base_path, 'Default.gif')
-    print("Descripcion no coincide, asignando Default")
-    return os.path.join(base_path, 'Default.gif')
-            
 
 #Se declara la ruta de inicio.
 @app.route('/')
@@ -168,7 +161,6 @@ def procesar():
     print(f"GIF destino: {datos['gif_destino']}")
 
     session['datos'] = datos
-
     return redirect(url_for('resultado'))
 
 #Manda los datos al Front2.html donde se va a visualizar los elementos obtenidos.

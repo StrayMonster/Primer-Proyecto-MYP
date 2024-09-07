@@ -18,24 +18,15 @@
 <body>    
     <main>
         <br>
-    Resultado del Clima <br>
-    Origen: {{datos.origen}}<br>
-    Destino: {{datos.destino}}<br>
-    Latitud Origen: {{datos.origenLatitud}}<br>
-    Longitud Origen: {{datos.origenLongitud}}<br>
-    Latitud Destino: {{datos.destinoLatitud}}<br>
-    Longitud Destino:  {{datos.destinoLongitud}}<br>
-
-    Clima Origen<br>
-    Origen: {{datos.origen}}<br>
-    Descripción: {{datos.clima_origen.descripcion}}<br>
-    Temperatura: {{datos.clima_origen.temperatura}}<br>
-    <img src="{{ url_for('static', filename=datos.gif_origen) }}" alt="Clima Origen" onerror="this.src='{{ url_for('static', filename='Recursos/Imagenes/Default.gif') }}'"><br>
-    Clima Destino<br>
-    Destino: {{datos.destino}}<br>
-    Descripción: {{datos.clima_destino.descripcion}}<br>
-    Temperatura: {{datos.clima_destino.temperatura}}<br>
-    <img src="{{ url_for('static', filename=datos.gif_destino) }}" alt="Clima Destino" onerror="this.src='{{ url_for('static', filename='Recursos/Imagenes/Default.gif') }}'"><br>
+    <h2>Origen</h2>
+    <p>Descripción: {{ datos.clima_origen.descripcion }}</p>
+    <p>Temperatura: {{ datos.clima_origen.temperatura }}</p>
+    <img src="{{ url_for('static', filename=datos['gif_origen']) }}" alt="Weather GIF Origen" onerror="this.src='{{ url_for('static', filename='Recursos/Imagenes/Default.gif') }}'">
+        
+    <h2>Destino</h2>
+    <p>Descripción: {{ datos.clima_destino.descripcion }}</p>
+    <p>Temperatura: {{ datos.clima_destino.temperatura }}</p>
+    <img src="{{ url_for('static', filename=datos['gif_destino']) }}" alt="Weather GIF Destino" onerror="this.src='{{ url_for('static', filename='Recursos/Imagenes/Default.gif') }}'">
     </main>
     <footer>
         &copy; Weathering 2024. Todos los derechos reservados.<br>
