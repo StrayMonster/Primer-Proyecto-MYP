@@ -48,20 +48,24 @@ def seleccionarGif(descripcion):
         "thunderstorm with drizzle" in descripcion or 
         "thunderstorm with heavy drizzle" in descripcion):
         return "Recursos/Imagenes/LluviaElectrica.gif"
+    
     elif ("light intensity drizzle" in descripcion or 
-          "light intensity drizzle rain" in descripcion or 
+          "light intensity drizzle rain" in descripcion or
           "light rain" in descripcion):
-        return "Recursos/Imagenes/LluviaElectrica.gifLluviaLL.gif"
+        return "Recursos/Imagenes/LluviaLL.gif"
+    
     elif ("drizzle" in descripcion or
           "drizzle rain'" in descripcion or
           "heavy intensity drizzle rain" in descripcion or
           "shower rain and drizzle" in descripcion or
           "shower drizzle" in descripcion):
         return "Recursos/Imagenes/LluviaL.gif"
+    
     elif  ("moderate rain" in descripcion or
            "heavy intensity drizzle" in descripcion or
            "heavy shower rain and drizzle" in descripcion):
         return "Recursos/Imagenes/LluviaM.gif"
+    
     elif  ("very heavy rain" in descripcion or
            "heavy intensity rain" in descripcion or
            "extreme rain" in descripcion or
@@ -70,15 +74,18 @@ def seleccionarGif(descripcion):
            "heavy intensity shower rain" in descripcion or
            "ragged shower rain" in descripcion):
         return "Recursos/Imagenes/LluviaH.gif"
+    
     elif ("Sleet" in descripcion or
           "Light shower sleet" in descripcion or
           "Shower sleet" in descripcion or
           "squalls" in descripcion or
           "freezing rain" in descripcion):
         return "Recursos/Imagenes/AguaNieve.gif"
+    
     elif ("light snow" in descripcion or
           "Snow" in descripcion):
         return "Recursos/Imagenes/NevandoL.gif"
+    
     elif ("Heavy snow" in descripcion or
           "Light rain and snow" in descripcion or
           "Rain and snow" in descripcion or
@@ -86,27 +93,104 @@ def seleccionarGif(descripcion):
           "Shower snow" in descripcion or
           "Heavy shower snow" in descripcion):
         return "Recursos/Imagenes/Nevando.gif"
+    
     elif ("tornado" in descripcion):
         return "Recursos/Imagenes/Tornado.gif"
+    
     elif ("clear sky" in descripcion):
         return "Recursos/Imagenes/Despejado.jpg"
+    
     elif ("mist" in descripcion or
           "smoke" in descripcion or
           "haze" in descripcion or
           "fog" in descripcion or
           "dust" in descripcion):
         return "Recursos/Imagenes/Neblina.gif"
+    
     elif ("sand" in descripcion or
           "dust whirls" in descripcion):
         return "Recursos/Imagenes/Arena.gif"
+    
     elif ("volcanic ash" in descripcion):
         return "Recursos/Imagenes/Ceniza.gif"
-    else:
+    
+    elif("few clouds" in descripcion):
+        return "Recursos/Imagenes/NubladoL.jpg"
+    
+    elif("scattered clouds" in descripcion):
+        return "Recursos/Imagenes/NubladoLM.gif"
+    
+    elif("broken clouds" in descripcion):
+        return "Recursos/Imagenes/NubladoM.jpg"
+    
+    elif("overcast clouds" in descripcion):
+        return "Recursos/Imagenes/NubladoH.gif"
+    
+    else: 
         return "Recursos/Imagenes/Default.gif"
 
+traducciones = {
+    "thunderstorm with light rain": "Tormenta con lluvia ligera.",
+    "thunderstorm with rain": "Tormenta con lluvia.",
+    "thunderstorm with heavy rain": "Tormenta con lluvia fuerte.",
+    "light thunderstorm": "Tormenta ligera.",
+    "thunderstorm": "Tormenta.",
+    "heavy thunderstorm": "Tormenta fuerte.",
+    "ragged thunderstorm": "Tormenta irregular.",
+    "thunderstorm with light drizzle": "Tormenta con llovizna ligera.",
+    "thunderstorm with drizzle": "Tormenta con llovizna.",
+    "thunderstorm with heavy drizzle": "Tormenta con llovizna fuerte.",
+    "light intensity drizzle": "Llovizna de intensidad ligera.",
+    "light intensity drizzle rain": "Lluvia de llovizna ligera.",
+    "light rain": "Lluvia ligera.",
+    "drizzle": "Llovizna.",
+    "drizzle rain": "Lluvia de llovizna.",
+    "heavy intensity drizzle rain": "Lluvia de llovizna intensa.",
+    "shower rain and drizzle": "Chubasco y llovizna.",
+    "shower drizzle": "Chubasco de llovizna.",
+    "moderate rain": "Lluvia moderada.",
+    "heavy intensity drizzle": "Llovizna intensa.",
+    "heavy shower rain and drizzle": "Chubasco fuerte y llovizna.",
+    "very heavy rain": "Lluvia muy fuerte.",
+    "heavy intensity rain": "Lluvia de intensidad fuerte.",
+    "extreme rain": "Lluvia extrema.",
+    "light intensity shower rain": "Chubasco de intensidad ligera.",
+    "shower rain": "Chubasco.",
+    "heavy intensity shower rain": "Chubasco de intensidad fuerte.",
+    "ragged shower rain": "Chubasco irregular.",
+    "sleet": "Aguanieve.",
+    "light shower sleet": "Chubasco ligero de aguanieve.",
+    "shower sleet": "Chubasco de aguanieve.",
+    "squalls": "Ráfagas.",
+    "freezing rain": "Lluvia helada.",
+    "light snow": "Nieve ligera.",
+    "snow": "Nieve.",
+    "heavy snow": "Nieve fuerte.",
+    "light rain and snow": "Lluvia ligera y nieve.",
+    "rain and snow": "Lluvia y nieve.",
+    "light shower snow": "Chubasco ligero de nieve.",
+    "shower snow": "Chubasco de nieve.",
+    "heavy shower snow": "Chubasco fuerte de nieve.",
+    "tornado": "Tornado.",
+    "clear sky": "Cielo despejado.",
+    "mist": "Niebla.",
+    "smoke": "Humo.",
+    "haze": "Bruma.",
+    "fog": "Niebla.",
+    "dust": "Polvo.",
+    "sand": "Arena.",
+    "dust whirls": "Remolinos de polvo.",
+    "volcanic ash": "Ceniza volcánica.",
+    "few clouds": "Pocas nubes.",
+    "scattered clouds": "Nubes dispersas.",
+    "broken clouds": "Nubes fragmentadas.",
+    "overcast clouds": "Nubes cubiertas."
+}
 
-
-
+def traducirDescripcion(descripcion):
+    for en, es in traducciones.items():
+        descripcion = descripcion.replace(en, es)
+    return descripcion
 
 #Se declara la ruta de inicio.
 @app.route('/')
@@ -153,12 +237,12 @@ def procesar():
     
     datos['clima_origen'] = clima_origen
     datos['gif_origen'] = seleccionarGif(clima_origen['descripcion'])
+    clima_origen['descripcion'] = traducirDescripcion(clima_origen['descripcion'])
+
 
     datos['clima_destino'] = clima_destino
     datos['gif_destino'] = seleccionarGif(clima_destino['descripcion'])
-
-    print(f"GIF origen: {datos['gif_origen']}")
-    print(f"GIF destino: {datos['gif_destino']}")
+    clima_destino['descripcion'] = traducirDescripcion(clima_destino['descripcion'])
 
     session['datos'] = datos
     return redirect(url_for('resultado'))

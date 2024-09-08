@@ -26,6 +26,7 @@
     <h2>Destino</h2>
     <p>Descripción: {{ datos.clima_destino.descripcion }}</p>
     <p>Temperatura: {{ datos.clima_destino.temperatura }}</p>
+    <p>Recomendación: {{datos.recomendacion_destino}}</p>
     <img src="{{ url_for('static', filename=datos['gif_destino']) }}" alt="Weather GIF Destino" onerror="this.src='{{ url_for('static', filename='Recursos/Imagenes/Default.gif') }}'">
     </main>
     <footer>
