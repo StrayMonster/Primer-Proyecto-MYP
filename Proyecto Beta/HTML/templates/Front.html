@@ -11,7 +11,7 @@
 
     <ul>
         <main-header>
-            <li><img src="{{url_for('static', filename= 'Recursos/Imagenes/LogoAv.webp')}}" width="55" height="44">
+            <li><img src="{{url_for('static', filename= 'Recursos/Imagenes/Maleta.jpeg')}}" width="55" height="44">
             <li><a href="./Front.html"> Inicio </a></li>
         </main-header>
     </ul>
@@ -31,8 +31,9 @@
               *El sitio no procederá si ambas opciones son iguales.<br>
               *El sitio no procederá si las dos opciones no están marcadas.
         </center> <br><br>
-        <form action = "/procesar" method="post" id="FormularioClima">
-            <label for="opcion1"> Origen: </label>
+        <form action = "/procesar" method="post" id="FormularioClima" class = "form-container">
+            <label for="opcion1">  </label>
+            <div class = "form-group">
             <select id="Parametro1" name="Parametro1" onchange="validarFormulario()">
                 <option value=""> Selecciona el lugar en el que te encuentras.</option>
                 <option value="ACA"> Acapulco (ACA).</option>
@@ -64,7 +65,9 @@
                 <option value="VSA">Villahermosa (VSA).</option>
                 <option value="ZCL">Zacatecas (ZCL).</option>
             </select>
-            <label for="opcion2"> Destino: </label>
+            </div>
+            <div class = "form-group">
+            <label for="opcion2">  </label>
             <select id="Parametro2" name="Parametro2" onchange="validarFormulario()">
                 <option value=""> Selecciona el destino. </option>
                 <option value="ACA">Acapulco (ACA).</option>
@@ -111,9 +114,10 @@
                 <option value="YVR">Vancouver (YVR).</option>
                 <option value="ZCL">Zacatecas(ZCL).</option>
             </select>
+            </div>
             <br>
-            <button type="button" id="enviar" onclick="enviarFormulario()" disabled> Consultar </button>
-        </form>
+            </form>
+            <center><button type="button" id="enviar" onclick="enviarFormulario()" disabled> Consultar </button></center>
         
     </main>
     <footer>

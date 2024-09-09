@@ -273,13 +273,13 @@ def obtenerRecomendacion(descripcion):
         return "No hay muchas nubes, puedes disfrutar el día, si la temperatura lo permite."
     
     elif("scattered clouds" in descripcion):
-        return "Esta algo nublado, puedes disfrutar el día, a menos que sean nubes de lluvia." 
+        return "Esta algo nublado, puedes disfrutar el día, a menos que llueva." 
     
     elif("broken clouds" in descripcion):
-        return "Hay una cantidad de nubes grande. A menos que se vean nubes de lluvia, disfruta."
+        return "Hay una cantidad de nubes grande. Mientras no llueva, todo bien."
     
     elif("overcast clouds" in descripcion):
-        return "Esta totalmente nublado. Si no son nubes de lluvia, disfruta, aunque un día gris, no siempre es lo mejor."
+        return "Esta totalmente nublado. Mientras no sean nubes de lluvia, todo bien."
     
     else: 
         return "No se requiere precaución especial." 

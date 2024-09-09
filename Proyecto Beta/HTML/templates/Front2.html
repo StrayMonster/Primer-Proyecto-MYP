@@ -10,7 +10,7 @@
     <center><titulo> Weathering </titulo></center>
     <ul>
         <main-header>
-            <li><img src="{{url_for('static', filename= 'Recursos/Imagenes/LogoAv.webp')}}" width="55" height="44">
+            <li><img src="{{url_for('static', filename= 'Recursos/Imagenes/Maleta.jpeg')}}" width="55" height="44">
             <li><a href="{{url_for('index')}}"> Inicio </a></li>
         </main-header>
     </ul>
@@ -21,13 +21,13 @@
     <h2>Origen: {{ datos.origen }}</h2>
     <p>Descripción: {{ datos.clima_origen.descripcion_traducida }}</p>
     <p>Temperatura: {{ datos.clima_origen.temperatura }} °C</p>
-    <p>Sensacion Térmica: {{ datos.clima_origen.sensacion_termica}}<br>
+    <p>Sensacion Térmica: {{ datos.clima_origen.sensacion_termica}} °C<br>
     <img src="{{ url_for('static', filename=datos['gif_origen']) }}" alt="Weather GIF Origen" onerror="this.src='{{ url_for('static', filename='Recursos/Imagenes/Default.gif') }}'">
         
     <h2>Destino: {{ datos.destino }}</h2>
     <p>Descripción: {{ datos.clima_destino.descripcion_traducida }}</p>
-    <p>Temperatura: {{ datos.clima_destino.temperatura }}</p>
-    <p>Sensacion Térmica: {{ datos.clima_destino.sensacion_termica}}</p>
+    <p>Temperatura: {{ datos.clima_destino.temperatura }} °C</p>
+    <p>Sensacion Térmica: {{ datos.clima_destino.sensacion_termica}} °C</p>
     <p>Recomendación: {{datos.recomendacion_destino}}</p>
     <p>Recomendación por temperatura: {{datos.recomendacion_temp_destino }}</p>
     <img src="{{ url_for('static', filename=datos['gif_destino']) }}" alt="Weather GIF Destino" onerror="this.src='{{ url_for('static', filename='Recursos/Imagenes/Default.gif') }}'">
