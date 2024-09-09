@@ -28,7 +28,6 @@ def obtener_clima(latitud, longitud):
             'sensacion_termica': datos_clima['main']['feels_like'],
             'humedad': datos_clima['main']['humidity'],
             'descripcion': datos_clima['weather'][0]['description'],
-            'icono':datos_clima['weather'][0]['icon']
         }
         cache_clima[clave_cache] = clima
         return clima
@@ -192,6 +191,115 @@ def traducirDescripcion(descripcion):
         descripcion = descripcion.replace(en, es)
     return descripcion
 
+def obtenerRecomendacion(descripcion):
+    if ("thunderstorm with light rain" in descripcion or 
+        "thunderstorm with rain" in descripcion or 
+        "thunderstorm with heavy rain" in descripcion or 
+        "light thunderstorm" in descripcion or 
+        "thunderstorm" in descripcion or 
+        "heavy thunderstorm" in descripcion or 
+        "ragged thunderstorm" in descripcion or 
+        "thunderstorm with light drizzle" in descripcion or 
+        "thunderstorm with drizzle" in descripcion or 
+        "thunderstorm with heavy drizzle" in descripcion):
+        return "Hay tormenta eléctrica. Evita estar en posiciones elevadas, cerca de elementos metálicos, debajo de árboles ni permanecer en espacios abiertos. Busca refugio."
+    
+    elif ("light intensity drizzle" in descripcion or 
+          "light intensity drizzle rain" in descripcion or
+          "light rain" in descripcion):
+        return "Se recomienda llevar paraguas."
+    
+    elif ("drizzle" in descripcion or
+          "drizzle rain'" in descripcion or
+          "heavy intensity drizzle rain" in descripcion or
+          "shower rain and drizzle" in descripcion or
+          "shower drizzle" in descripcion):
+        return "Se recomienda llevar chamarra y paraguas."
+    
+    elif  ("moderate rain" in descripcion or
+           "heavy intensity drizzle" in descripcion or
+           "heavy shower rain and drizzle" in descripcion):
+        return "Se recomienda llevar paraguas e impermeable."
+    
+    elif  ("very heavy rain" in descripcion or
+           "heavy intensity rain" in descripcion or
+           "extreme rain" in descripcion or
+           "light intensity shower rain" in descripcion or
+           "shower rain" in descripcion or
+           "heavy intensity shower rain" in descripcion or
+           "ragged shower rain" in descripcion):
+        return "Se recomienda no salir. A menos que sea necesario, lleva paraguas, impermeable y ten mucha precaución."
+    
+    elif ("Sleet" in descripcion or
+          "Light shower sleet" in descripcion or
+          "Shower sleet" in descripcion or
+          "squalls" in descripcion or
+          "freezing rain" in descripcion):
+        return "Se recomienda llevar abrigo y paraguas."
+    
+    elif ("light snow" in descripcion or
+          "Snow" in descripcion):
+        return "Se recomienda ir abrigado y tener precaución."
+    
+    elif ("Heavy snow" in descripcion or
+          "Light rain and snow" in descripcion or
+          "Rain and snow" in descripcion or
+          "Light shower snow" in descripcion or
+          "Shower snow" in descripcion or
+          "Heavy shower snow" in descripcion):
+        return "Se recomienda no salir. En dado caso, ir abrigado y llevar el equipo necesario. Ir con mucha precaución."
+    
+    elif ("tornado" in descripcion):
+        return "Ten extrema precaución, no salgas, busca refugio, preferentemente sotanos." 
+    
+    elif ("clear sky" in descripcion):
+        return "Disfruta, si la temperatura lo permite :)."
+    
+    elif ("mist" in descripcion or
+          "smoke" in descripcion or
+          "haze" in descripcion or
+          "fog" in descripcion or
+          "dust" in descripcion):
+        return "Ten extrema precaución. Si es posible no te desplazes."
+    
+    elif ("sand" in descripcion or
+          "dust whirls" in descripcion):
+        return "Se recomienda permanecer en interiores. Usa mascarilla y un protector para los ojos si vas a salir." 
+    
+    elif ("volcanic ash" in descripcion):
+        return "Se recomienda permanecer en interiores. Si vas a salir usa mascarillas y protectores para los ojos." 
+    
+    elif("few clouds" in descripcion):
+        return "No hay muchas nubes, puedes disfrutar el día, si la temperatura lo permite."
+    
+    elif("scattered clouds" in descripcion):
+        return "Esta algo nublado, puedes disfrutar el día, a menos que sean nubes de lluvia." 
+    
+    elif("broken clouds" in descripcion):
+        return "Hay una cantidad de nubes grande. A menos que se vean nubes de lluvia, disfruta."
+    
+    elif("overcast clouds" in descripcion):
+        return "Esta totalmente nublado. Si no son nubes de lluvia, disfruta, aunque un día gris, no siempre es lo mejor."
+    
+    else: 
+        return "No se requiere precaución especial." 
+    
+def obtenerRecomendacionTemp(temperatura):
+    if temperatura < 1:
+        return "Hace demasiado frío, ve lo más abrigado posible y usa ropa térmica."
+    elif 1 <= temperatura <= 10:
+        return "Hace bastante frío, usa chamarra."
+    elif 10 <= temperatura <= 16:
+        return "Es un clima fresco, lleva una chaqueta."
+    elif 16 <= temperatura <= 22:
+        return "Es un clima agradable, usa ropa ligera."
+    elif 22 <= temperatura <= 29:
+        return "Es un clima calido, ve con ropa fresca."
+    elif temperatura > 30:
+        return "Hace demasiado calor, usa ropa fresca y mantente hidratado."
+    else:
+        return "No se requiere precaución especial."
+     
 #Se declara la ruta de inicio.
 @app.route('/')
 def index():
@@ -242,7 +350,9 @@ def procesar():
 
     datos['clima_destino'] = clima_destino
     datos['gif_destino'] = seleccionarGif(clima_destino['descripcion'])
+    datos['recomendacion_destino'] = obtenerRecomendacion(clima_destino['descripcion'])
     clima_destino['descripcion'] = traducirDescripcion(clima_destino['descripcion'])
+    datos['recomendacion_temp_destino'] = obtenerRecomendacionTemp(clima_destino['temperatura'])
 
     session['datos'] = datos
     return redirect(url_for('resultado'))
