@@ -1,5 +1,5 @@
 #Se importan los elementos que se van a usar, flask, pandas y la api.
-from flask import Flask, request, render_template, redirect, url_for, session
+from flask import Flask, request, session, render_template, redirect, url_for 
 import pandas as pd
 import requests
 import os
@@ -308,6 +308,7 @@ def index():
 #Se declará los elementos que se van a procesar, en este caso buscar en el csv los parametros otorgados en el front.html
 @app.route('/procesar', methods=['POST'])
 def procesar():
+    session.clear()
     #Variables que almacenan las respuestas del forms de front.html, en este caso como el nombre de las variables indica.
     origen = request.form['Parametro1']
     destino = request.form['Parametro2']
@@ -345,13 +346,13 @@ def procesar():
     
     datos['clima_origen'] = clima_origen
     datos['gif_origen'] = seleccionarGif(clima_origen['descripcion'])
-    clima_origen['descripcion'] = traducirDescripcion(clima_origen['descripcion'])
+    datos['clima_origen']['descripcion_traducida'] = traducirDescripcion(clima_origen['descripcion'])
 
 
     datos['clima_destino'] = clima_destino
     datos['gif_destino'] = seleccionarGif(clima_destino['descripcion'])
     datos['recomendacion_destino'] = obtenerRecomendacion(clima_destino['descripcion'])
-    clima_destino['descripcion'] = traducirDescripcion(clima_destino['descripcion'])
+    datos['clima_destino']['descripcion_traducida'] = traducirDescripcion(clima_destino['descripcion'])
     datos['recomendacion_temp_destino'] = obtenerRecomendacionTemp(clima_destino['temperatura'])
 
     session['datos'] = datos
