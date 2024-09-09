@@ -185,3 +185,39 @@ button:disabled{
 	color: #aaaaaa;
 }
 
+.clima-container{
+	display: flex;
+	justify-content: space-around;
+	width: 80%;
+	margin: 20px auto;
+}
+
+.clima-caja{
+	width: 600px;
+	height: 600px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	border: 2px solid #424242;
+	border-radius: 50%;
+	padding: 10px;
+	box-sizing: border-box;
+	text-align: center;
+	background-size: cover;
+	background-position: center;
+	font-size: 21px;
+	overflow: hidden;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+	opacity: .8;
+	color: white;
+}
+
+.clima-caja img{
+	width: 100px;
+	height: 100px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+

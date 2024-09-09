@@ -202,7 +202,7 @@ def obtenerRecomendacion(descripcion):
         "thunderstorm with light drizzle" in descripcion or 
         "thunderstorm with drizzle" in descripcion or 
         "thunderstorm with heavy drizzle" in descripcion):
-        return "Hay tormenta eléctrica. Evita estar en posiciones elevadas, cerca de elementos metálicos, debajo de árboles ni permanecer en espacios abiertos. Busca refugio."
+        return "Busca refugio. Evita estar cerca de elementos metálicos. "
     
     elif ("light intensity drizzle" in descripcion or 
           "light intensity drizzle rain" in descripcion or
@@ -247,7 +247,7 @@ def obtenerRecomendacion(descripcion):
           "Light shower snow" in descripcion or
           "Shower snow" in descripcion or
           "Heavy shower snow" in descripcion):
-        return "Se recomienda no salir. En dado caso, ir abrigado y llevar el equipo necesario. Ir con mucha precaución."
+        return "Se recomienda no salir. En dado caso, ir abrigado y llevar el equipo necesario."
     
     elif ("tornado" in descripcion):
         return "Ten extrema precaución, no salgas, busca refugio, preferentemente sotanos." 
@@ -270,16 +270,16 @@ def obtenerRecomendacion(descripcion):
         return "Se recomienda permanecer en interiores. Si vas a salir usa mascarillas y protectores para los ojos." 
     
     elif("few clouds" in descripcion):
-        return "No hay muchas nubes, puedes disfrutar el día, si la temperatura lo permite."
+        return "Puedes disfrutar el día, si la temperatura lo permite."
     
     elif("scattered clouds" in descripcion):
-        return "Esta algo nublado, puedes disfrutar el día, a menos que llueva." 
+        return "Puedes disfrutar el día, a menos que llueva." 
     
     elif("broken clouds" in descripcion):
-        return "Hay una cantidad de nubes grande. Mientras no llueva, todo bien."
+        return "Mientras no llueva, todo bien."
     
     elif("overcast clouds" in descripcion):
-        return "Esta totalmente nublado. Mientras no sean nubes de lluvia, todo bien."
+        return "Mientras no sean nubes de lluvia, todo bien."
     
     else: 
         return "No se requiere precaución especial." 
@@ -295,7 +295,7 @@ def obtenerRecomendacionTemp(temperatura):
         return "Es un clima agradable, usa ropa ligera."
     elif 22 <= temperatura <= 29:
         return "Es un clima calido, ve con ropa fresca."
-    elif temperatura > 30:
+    elif temperatura >= 30:
         return "Hace demasiado calor, usa ropa fresca y mantente hidratado."
     else:
         return "No se requiere precaución especial."
