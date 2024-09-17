@@ -1,5 +1,6 @@
 #Se importan los elementos que se van a usar, flask, pandas y la api.
 from flask import Flask, request, session, render_template, redirect, url_for 
+from dotenv import load_dotenv
 import pandas as pd
 import requests
 import os
@@ -11,7 +12,12 @@ app.secret_key = 'waos'
 #Se le pide por favor que ingrese su dirección de archivo local para que funcione esté elemento.
 ubicaciones = pd.read_csv('E:/Cardinal/Github/Primer-Proyecto-MYP/Proyecto Beta/HTML/static/Recursos/ubicaciones.csv')
 
-API_KEY = '644a995fb441ee0ec22ae8ff3865161f'
+load_dotenv()
+API_KEY = os.getenv('APIK')
+print(f"API_KEY: {API_KEY}")
+
+if API_KEY is None:
+    raise ValueError("La clave API no se ha cargado correctamente.")
 
 cache_clima = {}
 
