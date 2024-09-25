@@ -1,0 +1,223 @@
+
+main-header{
+	background: rgb(29, 103, 150);
+	height: 45px;
+	width: 100%;
+	left: 0;
+	top: 0;
+	position: fixed;
+}
+
+li{
+	float: left;
+}
+
+ul{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #4f5066;
+} 
+
+li a, .dropbtn {
+	display: inline-block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+  }
+  
+  li a:hover, .dropdown:hover .dropbtn {
+	background-color: #5895ad;
+  }
+
+click{
+	padding: 5px;
+	cursor: pointer;
+}
+
+body{
+	background: url("./Imagenes/Fondo.jpg") center center no-repeat;
+	min-height: 100%;
+	background-size: cover;
+	background-attachment: fixed;
+    background-position: auto;
+}
+
+footer{
+    position: fixed;
+    background: rgb(33, 43, 49);
+	height: 45px;
+	width: 100%;
+	left: 0;
+    bottom: 0;
+    text-align: center;
+    color:#606177;
+}
+
+titulo {
+    color: rgb(59, 48, 211);
+    text-align: center;
+    font-size: 50pt;
+    text-shadow: 5px 5px 15px #81e9fc;
+}
+
+subtitulo{
+	color: rgb(238, 231, 231);
+	text-align: center; 
+	font-size: 32pt;
+	text-shadow: 5px 5px 15px rgb(0, 0, 0);
+}
+
+txt{
+	color: rgb(253, 248, 248);
+	text-align: center;
+	font-size: 23pt;
+
+}
+
+.boxcontent{
+	box-sizing: content-box;
+	width: 900px;
+	color: rgb(49, 49, 49);
+	background: rgba(223, 226, 223, 0.781);
+	overflow: hidden;
+	display: inline-block;
+	border-radius: 8px;
+	padding: 5px;
+	text-align: justify;
+	font-size: 25px
+}
+
+.boxcontent2{
+	color: green;
+	background: rgba(38, 109, 38, 0.781);
+	border: 2px solid black;
+	overflow: hidden;
+	height: 400px;
+	width:800px;
+	display: inline-block;
+}
+
+.form-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 25px;
+	gap: 20px;
+	width: 94%;
+}
+
+.form-group{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	font-size: 25px;
+	gap: 35px;
+	margin-bottom: 15px;
+}
+
+.form-group label{
+	display: block;
+	margin-bottom: 50px;
+}
+
+.form-group select{
+	width: 100%;
+	padding: 10px;
+	border: 1.8px solid #252525;
+	border-radius: 5px;
+	transition: background-color 0.3 ease;
+	color: black;
+	background-color: rgba(223, 226, 223, 0.849);;
+}
+
+.form-group select:hover{
+	background-color: rgba(223, 226, 223, 0.753);;
+}
+
+
+label{
+	width: 100px;
+	margin-right: 10px;
+}
+
+select{
+	flex-grow: 1;
+	font-size: 16px;
+	overflow-y: auto;
+	background-color: #2292be;
+}
+
+option{
+	font-size: 16px;
+	background-color: rgba(223, 226, 223, 0.781);
+	color: black;
+}
+
+button{
+	cursor: pointer;
+	margin-top: 20px;
+	font-size: 20px;
+	border-radius: 5px;
+	background-color: #42a1c7;
+	color: rgb(238, 231, 231);
+	border: 1px solid black;
+	padding: 10px 20px;
+	transition: background-color ease, color 0.3 ease;
+}
+
+button:hover {
+	background-color: #1576a3;
+	color: #ffffff;
+}
+
+button:active{
+	background-color: #02778b;
+	color: #ffffff
+}
+
+button:disabled{
+	cursor: not-allowed;
+	background-color: #eeeeee;
+	color: #aaaaaa;
+}
+
+.clima-container{
+	display: flex;
+	justify-content: space-around;
+	width: 80%;
+	margin: 20px auto;
+}
+
+.clima-caja{
+	width: 600px;
+	height: 600px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	border: 2px solid #424242;
+	border-radius: 50%;
+	padding: 10px;
+	box-sizing: border-box;
+	text-align: center;
+	background-size: cover;
+	background-position: center;
+	font-size: 21px;
+	overflow: hidden;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+	opacity: .8;
+	color: white;
+}
+
+.clima-caja img{
+	width: 100px;
+	height: 100px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
