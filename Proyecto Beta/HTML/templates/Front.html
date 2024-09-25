@@ -12,7 +12,7 @@
     <ul>
         <main-header>
             <li><img src="{{url_for('static', filename= 'Recursos/Imagenes/Maleta.jpeg')}}" width="55" height="44">
-            <li><a href="./Front.html"> Inicio </a></li>
+            <li class="headt"><a href="./Front.html"> Inicio </a></li>
         </main-header>
     </ul>
 </head>
@@ -21,7 +21,7 @@
     <main>
         <center>
         <subtitulo> Instrucciones </subtitulo><br>
-        <div class="boxcontent"> Bienvenidos a Weathering, está página proporciona el clima de las zonas solicitadas.<br>
+        <div class="boxcontent"> <txt>Bienvenidos a Weathering, está página proporciona el clima de las zonas solicitadas.<br>
             Escencialmente muestra el clima y recomendaciones del destino.<br>
             Para usarla, sigue estos pasos: <br>
             -Coloca en ambas casillas los lugares de los que deseas conocer el clima.<br>
@@ -29,7 +29,7 @@
               *El lado derecho es el lugar al que te diriges y quieres conocer el clima.<br>
             -Condiciones:<br>
               *El sitio no procederá si ambas opciones son iguales.<br>
-              *El sitio no procederá si las dos opciones no están marcadas.
+              *El sitio no procederá si las dos opciones no están marcadas.</txt>
         </center> <br><br>
         <form action = "/procesar" method="post" id="FormularioClima" class = "form-container">
             <label for="opcion1">  </label>
@@ -71,7 +71,6 @@
             <select id="Parametro2" name="Parametro2" onchange="validarFormulario()">
                 <option value=""> Selecciona el destino. </option>
                 <option value="ACA">Acapulco (ACA).</option>
-                <option value="HVA">Analalava (HVA).</option>
                 <option value="ATL">Atlanta (ATL).</option>
                 <option value="BOG">Bogotá (BOG).</option>
                 <option value="CUN">Cancún (CUN).</option>
