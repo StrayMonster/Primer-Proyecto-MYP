@@ -16,7 +16,6 @@ ubicaciones = pd.read_csv(csv_camino)
 
 load_dotenv()
 API_KEY = os.getenv('APIK')
-print(f"API_KEY: {API_KEY}")
 
 if API_KEY is None:
     raise ValueError("La clave API no se ha cargado correctamente.")
@@ -43,7 +42,6 @@ def obtener_clima(latitud, longitud):
         return None
 
 def seleccionarGif(descripcion):
-    print(f"Descripción otorgada: {descripcion}")
     if ("thunderstorm with light rain" in descripcion or 
         "thunderstorm with rain" in descripcion or 
         "thunderstorm with heavy rain" in descripcion or 
