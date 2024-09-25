@@ -8,13 +8,14 @@ import os
 app = Flask(__name__)
 app.secret_key = 'waos'
 
-#Vincular Base de datos con este programa:
-#Se le pide por favor que ingrese su dirección de archivo local para que funcione esté elemento.
-ubicaciones = pd.read_csv('E:/Cardinal/Github/Primer-Proyecto-MYP/Proyecto Beta/HTML/static/Recursos/ubicaciones.csv')
+ubicacion_archivo = os.path.dirname(os.path.abspath(__file__))
+
+csv_camino = os.path.join(ubicacion_archivo, 'static', 'Recursos', 'ubicaciones.csv')
+
+ubicaciones = pd.read_csv(csv_camino)
 
 load_dotenv()
 API_KEY = os.getenv('APIK')
-print(f"API_KEY: {API_KEY}")
 
 if API_KEY is None:
     raise ValueError("La clave API no se ha cargado correctamente.")
