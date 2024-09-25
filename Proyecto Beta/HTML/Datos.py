@@ -41,7 +41,7 @@ def obtener_clima(latitud, longitud):
     else:
         return None
 
-def seleccionarGif(descripcion):
+def obtenerGifyRecomendacion(descripcion):
     if ("thunderstorm with light rain" in descripcion or 
         "thunderstorm with rain" in descripcion or 
         "thunderstorm with heavy rain" in descripcion or 
@@ -52,24 +52,24 @@ def seleccionarGif(descripcion):
         "thunderstorm with light drizzle" in descripcion or 
         "thunderstorm with drizzle" in descripcion or 
         "thunderstorm with heavy drizzle" in descripcion):
-        return "Recursos/Imagenes/LluviaElectrica.gif"
+        return ("Recursos/Imagenes/LluviaElectrica.gif", "Busca refugio. Evita estar cerca de elementos metálicos.")
     
     elif ("light intensity drizzle" in descripcion or 
           "light intensity drizzle rain" in descripcion or
           "light rain" in descripcion):
-        return "Recursos/Imagenes/LluviaLL.gif"
+        return ("Recursos/Imagenes/LluviaLL.gif", "Se recomienda llevar paraguas.")
     
     elif ("drizzle" in descripcion or
           "drizzle rain'" in descripcion or
           "heavy intensity drizzle rain" in descripcion or
           "shower rain and drizzle" in descripcion or
           "shower drizzle" in descripcion):
-        return "Recursos/Imagenes/LluviaL.gif"
+        return ("Recursos/Imagenes/LluviaL.gif", "Se recomienda llevar chamarra y paraguas.")
     
     elif  ("moderate rain" in descripcion or
            "heavy intensity drizzle" in descripcion or
            "heavy shower rain and drizzle" in descripcion):
-        return "Recursos/Imagenes/LluviaM.gif"
+        return ("Recursos/Imagenes/LluviaM.gif", "Se recomienda llevar paraguas e impermeable.")
     
     elif  ("very heavy rain" in descripcion or
            "heavy intensity rain" in descripcion or
@@ -78,18 +78,18 @@ def seleccionarGif(descripcion):
            "shower rain" in descripcion or
            "heavy intensity shower rain" in descripcion or
            "ragged shower rain" in descripcion):
-        return "Recursos/Imagenes/LluviaH.gif"
+        return ("Recursos/Imagenes/LluviaH.gif", "Se recomienda no salir. A menos que sea necesario, lleva paraguas, impermeable y ten mucha precaución.")
     
     elif ("Sleet" in descripcion or
           "Light shower sleet" in descripcion or
           "Shower sleet" in descripcion or
           "squalls" in descripcion or
           "freezing rain" in descripcion):
-        return "Recursos/Imagenes/AguaNieve.gif"
+        return ("Recursos/Imagenes/AguaNieve.gif", "Se recomienda llevar abrigo y paraguas.")
     
     elif ("light snow" in descripcion or
           "Snow" in descripcion):
-        return "Recursos/Imagenes/NevandoL.gif"
+        return ("Recursos/Imagenes/NevandoL.gif", "Se recomienda ir abrigado y tener precaución.")
     
     elif ("Heavy snow" in descripcion or
           "Light rain and snow" in descripcion or
@@ -97,42 +97,42 @@ def seleccionarGif(descripcion):
           "Light shower snow" in descripcion or
           "Shower snow" in descripcion or
           "Heavy shower snow" in descripcion):
-        return "Recursos/Imagenes/Nevando.gif"
+        return ("Recursos/Imagenes/Nevando.gif", "Se recomienda no salir. En dado caso, ir abrigado y llevar el equipo necesario.")
     
     elif ("tornado" in descripcion):
-        return "Recursos/Imagenes/Tornado.gif"
+        return ("Recursos/Imagenes/Tornado.gif", "Ten extrema precaución, no salgas, busca refugio, preferentemente sotanos.")
     
     elif ("clear sky" in descripcion):
-        return "Recursos/Imagenes/Despejado.jpg"
+        return ("Recursos/Imagenes/Despejado.jpg", "Disfruta, si la temperatura lo permite :).")
     
     elif ("mist" in descripcion or
           "smoke" in descripcion or
           "haze" in descripcion or
           "fog" in descripcion or
           "dust" in descripcion):
-        return "Recursos/Imagenes/Neblina.gif"
+        return ("Recursos/Imagenes/Neblina.gif", "Ten extrema precaución. Si es posible no te desplazes.")
     
     elif ("sand" in descripcion or
           "dust whirls" in descripcion):
-        return "Recursos/Imagenes/Arena.gif"
+        return ("Recursos/Imagenes/Arena.gif", "Se recomienda permanecer en interiores. Usa mascarilla y un protector para los ojos si vas a salir." )
     
     elif ("volcanic ash" in descripcion):
-        return "Recursos/Imagenes/Ceniza.gif"
+        return ("Recursos/Imagenes/Ceniza.gif", "Se recomienda permanecer en interiores. Si vas a salir usa mascarillas y protectores para los ojos." )
     
     elif("few clouds" in descripcion):
-        return "Recursos/Imagenes/NubladoL.jpg"
+        return ("Recursos/Imagenes/NubladoL.jpg", "No se requiere precaución especial.")
     
     elif("scattered clouds" in descripcion):
-        return "Recursos/Imagenes/NubladoLM.gif"
+        return ("Recursos/Imagenes/NubladoLM.gif", "No se requiere precaución especial.")
     
     elif("broken clouds" in descripcion):
-        return "Recursos/Imagenes/NubladoM.jpg"
+        return ("Recursos/Imagenes/NubladoM.jpg", "No se requiere precaución especial.")
     
     elif("overcast clouds" in descripcion):
-        return "Recursos/Imagenes/NubladoH.gif"
+        return ("Recursos/Imagenes/NubladoH.gif", "No se requiere precaución especial.")
     
     else: 
-        return "Recursos/Imagenes/Default.gif"
+        return ("Recursos/Imagenes/Default.gif", "...")
 
 traducciones = {
     "thunderstorm with light rain": "Tormenta con lluvia ligera.",
@@ -197,99 +197,6 @@ def traducirDescripcion(descripcion):
         descripcion = descripcion.replace(en, es)
     return descripcion
 
-def obtenerRecomendacion(descripcion):
-    if ("thunderstorm with light rain" in descripcion or 
-        "thunderstorm with rain" in descripcion or 
-        "thunderstorm with heavy rain" in descripcion or 
-        "light thunderstorm" in descripcion or 
-        "thunderstorm" in descripcion or 
-        "heavy thunderstorm" in descripcion or 
-        "ragged thunderstorm" in descripcion or 
-        "thunderstorm with light drizzle" in descripcion or 
-        "thunderstorm with drizzle" in descripcion or 
-        "thunderstorm with heavy drizzle" in descripcion):
-        return "Busca refugio. Evita estar cerca de elementos metálicos. "
-    
-    elif ("light intensity drizzle" in descripcion or 
-          "light intensity drizzle rain" in descripcion or
-          "light rain" in descripcion):
-        return "Se recomienda llevar paraguas."
-    
-    elif ("drizzle" in descripcion or
-          "drizzle rain'" in descripcion or
-          "heavy intensity drizzle rain" in descripcion or
-          "shower rain and drizzle" in descripcion or
-          "shower drizzle" in descripcion):
-        return "Se recomienda llevar chamarra y paraguas."
-    
-    elif  ("moderate rain" in descripcion or
-           "heavy intensity drizzle" in descripcion or
-           "heavy shower rain and drizzle" in descripcion):
-        return "Se recomienda llevar paraguas e impermeable."
-    
-    elif  ("very heavy rain" in descripcion or
-           "heavy intensity rain" in descripcion or
-           "extreme rain" in descripcion or
-           "light intensity shower rain" in descripcion or
-           "shower rain" in descripcion or
-           "heavy intensity shower rain" in descripcion or
-           "ragged shower rain" in descripcion):
-        return "Se recomienda no salir. A menos que sea necesario, lleva paraguas, impermeable y ten mucha precaución."
-    
-    elif ("Sleet" in descripcion or
-          "Light shower sleet" in descripcion or
-          "Shower sleet" in descripcion or
-          "squalls" in descripcion or
-          "freezing rain" in descripcion):
-        return "Se recomienda llevar abrigo y paraguas."
-    
-    elif ("light snow" in descripcion or
-          "Snow" in descripcion):
-        return "Se recomienda ir abrigado y tener precaución."
-    
-    elif ("Heavy snow" in descripcion or
-          "Light rain and snow" in descripcion or
-          "Rain and snow" in descripcion or
-          "Light shower snow" in descripcion or
-          "Shower snow" in descripcion or
-          "Heavy shower snow" in descripcion):
-        return "Se recomienda no salir. En dado caso, ir abrigado y llevar el equipo necesario."
-    
-    elif ("tornado" in descripcion):
-        return "Ten extrema precaución, no salgas, busca refugio, preferentemente sotanos." 
-    
-    elif ("clear sky" in descripcion):
-        return "Disfruta, si la temperatura lo permite :)."
-    
-    elif ("mist" in descripcion or
-          "smoke" in descripcion or
-          "haze" in descripcion or
-          "fog" in descripcion or
-          "dust" in descripcion):
-        return "Ten extrema precaución. Si es posible no te desplazes."
-    
-    elif ("sand" in descripcion or
-          "dust whirls" in descripcion):
-        return "Se recomienda permanecer en interiores. Usa mascarilla y un protector para los ojos si vas a salir." 
-    
-    elif ("volcanic ash" in descripcion):
-        return "Se recomienda permanecer en interiores. Si vas a salir usa mascarillas y protectores para los ojos." 
-    
-    elif("few clouds" in descripcion):
-        return "Puedes disfrutar el día, si la temperatura lo permite."
-    
-    elif("scattered clouds" in descripcion):
-        return "Puedes disfrutar el día, a menos que llueva." 
-    
-    elif("broken clouds" in descripcion):
-        return "Mientras no llueva, todo bien."
-    
-    elif("overcast clouds" in descripcion):
-        return "Mientras no sean nubes de lluvia, todo bien."
-    
-    else: 
-        return "No se requiere precaución especial." 
-    
 def obtenerRecomendacionTemp(temperatura):
     if temperatura < 1:
         return "Hace demasiado frío, ve lo más abrigado posible y usa ropa térmica."
@@ -351,13 +258,16 @@ def procesar():
 
     
     datos['clima_origen'] = clima_origen
-    datos['gif_origen'] = seleccionarGif(clima_origen['descripcion'])
+    gifOrigen, nada = obtenerGifyRecomendacion(clima_origen['descripcion'])
+    datos['gif_origen'] = gifOrigen
+    #datos['gif_origen'] = seleccionarGif(clima_origen['descripcion'])
     datos['clima_origen']['descripcion_traducida'] = traducirDescripcion(clima_origen['descripcion'])
 
 
     datos['clima_destino'] = clima_destino
-    datos['gif_destino'] = seleccionarGif(clima_destino['descripcion'])
-    datos['recomendacion_destino'] = obtenerRecomendacion(clima_destino['descripcion'])
+    gifDestino, recomendacion = obtenerGifyRecomendacion(clima_destino['descripcion'])
+    datos['gif_destino'] = gifDestino
+    datos['recomendacion_destino'] = recomendacion
     datos['clima_destino']['descripcion_traducida'] = traducirDescripcion(clima_destino['descripcion'])
     datos['recomendacion_temp_destino'] = obtenerRecomendacionTemp(clima_destino['temperatura'])
 
