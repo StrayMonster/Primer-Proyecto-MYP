@@ -1,4 +1,3 @@
-#Se importan los elementos que se van a usar, flask, pandas y la api.
 from flask import Flask, request, session, render_template, redirect, url_for 
 from dotenv import load_dotenv
 import pandas as pd
@@ -23,6 +22,19 @@ if API_KEY is None:
 cache_clima = {}
 
 def obtener_clima(latitud, longitud):
+    '''
+    Esta función otorga los datos para que la api regrese la información solicitada.
+
+    Parametros: 
+    latitud(int): La latitud de la ubicacion.
+    longitud(int): La longitud de la ubicación.
+
+    Retorna:
+    int: Temperatura.
+    int: Sensación Térmica.
+    String: Descripcion del clima.
+
+    '''
     clave_cache = f"{latitud},{longitud}"
     if clave_cache in cache_clima:
         return cache_clima[clave_cache]
@@ -33,7 +45,6 @@ def obtener_clima(latitud, longitud):
         clima = {
             'temperatura': datos_clima['main']['temp'],
             'sensacion_termica': datos_clima['main']['feels_like'],
-            'humedad': datos_clima['main']['humidity'],
             'descripcion': datos_clima['weather'][0]['description'],
         }
         cache_clima[clave_cache] = clima
@@ -42,6 +53,16 @@ def obtener_clima(latitud, longitud):
         return None
 
 def obtenerGifyRecomendacion(descripcion):
+    '''
+    Función que dependiendo lo recibido, seleccione un gif y una descripción.
+
+    Parametros:
+    descripcion(String): La descripcion dada.
+
+    Return
+    gif: El gif obtenido a base de la descripción.
+    String: Recomendación.
+    '''
     if ("thunderstorm with light rain" in descripcion or 
         "thunderstorm with rain" in descripcion or 
         "thunderstorm with heavy rain" in descripcion or 
@@ -193,11 +214,29 @@ traducciones = {
 }
 
 def traducirDescripcion(descripcion):
+    '''
+    Función que traduce lo recibido.
+
+    Argumentos:
+    descripcion (String): El texto a traducir.
+
+    Retorno:
+    String: Texto traducido.
+    '''
     for en, es in traducciones.items():
         descripcion = descripcion.replace(en, es)
     return descripcion
 
 def obtenerRecomendacionTemp(temperatura):
+    '''
+    Función que da una recomendación basada en los datos recibidos.
+
+    Argumentos:
+    temperatura (int): Los datos que da la api respecto a dicho parametro.
+
+    Retorno:
+    (String): Recomendación dada a base de la temperatura.
+    '''
     if temperatura < 1:
         return "Hace demasiado frío, ve lo más abrigado posible y usa ropa térmica."
     elif 1 <= temperatura <= 10:
@@ -213,23 +252,31 @@ def obtenerRecomendacionTemp(temperatura):
     else:
         return "No se requiere precaución especial."
      
-#Se declara la ruta de inicio.
 @app.route('/')
 def index():
+    '''
+    Definición que inicializa la ruta de inicio.
+
+    Retorno:
+    La ruta de inicio.
+    '''
     return render_template('Front.html')
 
 #Se declará los elementos que se van a procesar, en este caso buscar en el csv los parametros otorgados en el front.html
 @app.route('/procesar', methods=['POST'])
 def procesar():
+    '''
+    Definición que procesa todos los datos solicitados en el archivo de trabajo.
+
+    Retorno:
+    Los datos procesados
+
+    '''
     session.clear()
-    #Variables que almacenan las respuestas del forms de front.html, en este caso como el nombre de las variables indica.
     origen = request.form['Parametro1']
     destino = request.form['Parametro2']
 
-    #Filtro que busca en csv, la fila en la que ambos parametros son iguales, esto facilita la busqueda y la obtención de datos posteriores.
     filtroExacto = ubicaciones[(ubicaciones['origin'] == origen) & (ubicaciones['destination'] == destino)]
-
-    #Si dicho filtro no es vació, entonces procesa los datos de csv en variables.
     if not filtroExacto.empty:
         primerElemento = filtroExacto.iloc[0]
         datos = {
@@ -240,7 +287,6 @@ def procesar():
             'origen': primerElemento['origin'],
             'destino': primerElemento['destination']
         }
-    # En otro caso, si no existe una fila en la que el origen y el destino coincide, busca por separado en cada columna, hasta que se encuentre dicho elemento.
     else:
         filtroOrigen = ubicaciones[ubicaciones['origin'] == origen]
         filtroDestino = ubicaciones[ubicaciones['destination'] == destino]
@@ -260,7 +306,6 @@ def procesar():
     datos['clima_origen'] = clima_origen
     gifOrigen, nada = obtenerGifyRecomendacion(clima_origen['descripcion'])
     datos['gif_origen'] = gifOrigen
-    #datos['gif_origen'] = seleccionarGif(clima_origen['descripcion'])
     datos['clima_origen']['descripcion_traducida'] = traducirDescripcion(clima_origen['descripcion'])
 
 
@@ -277,6 +322,12 @@ def procesar():
 #Manda los datos al Front2.html donde se va a visualizar los elementos obtenidos.
 @app.route('/resultado')
 def resultado():
+    '''
+    Funcion que presenta los datos procesados.
+
+    Retorno:
+    El lugar en el que se presentan los datos ya procesados.
+    '''
     datos = session.get('datos', {})
     return render_template('Front2.html', datos = datos)
 
