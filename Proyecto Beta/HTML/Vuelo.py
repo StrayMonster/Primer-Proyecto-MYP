@@ -46,6 +46,12 @@ def obtener_clima(latitud, longitud):
                     'temperatura': datos_clima['main']['temp'],
                     'sensacion_termica': datos_clima['main']['feels_like'],
                     'descripcion': datos_clima['weather'][0]['description'],
+                    'visibilidad': datos_clima.get('visibility', 'No disponible'),
+                    'velocidad_viento': datos_clima['wind']['speed'],
+                    'direccion_viento': datos_clima['wind']['deg'],
+                    'altitud_nuves': datos_clima['clouds'].get('all', 'No disponible'),
+                    'presion': datos_clima['main']['pressure'],
+                    'humedad': datos_clima['main']['humidity'],
                 }
                 cache_clima[clave_cache] = clima
                 return clima
@@ -91,15 +97,15 @@ def obtenerGifyRecomendacion(descripcion, esPrimerDescripcion):
         "thunderstorm with drizzle" in descripcion or 
         "thunderstorm with heavy drizzle" in descripcion):
         if esPrimerDescripcion:
-            return ("Recursos/Imagenes/LluviaElectrica.gif", "Debido al mal clima, puede que tu vuelo se demore.")
+            return ("Recursos/Imagenes/LluviaElectrica.gif", "Espere instrucciones de torre de control.")
         else:
-            return ("Recursos/Imagenes/LluviaElectrica.gif", "Busca refugio. Evita estar cerca de elementos metálicos.")
+            return ("Recursos/Imagenes/LluviaElectrica.gif", "Eviten estar cerca de elementos metálicos. Pueden presentarse demoras.")
     
     elif ("light intensity drizzle" in descripcion or 
           "light intensity drizzle rain" in descripcion or
           "light rain" in descripcion):
         if esPrimerDescripcion:
-            return ("Recursos/Imagenes/LluviaLL.gif", "Tu vuelo debe salir a tiempo.")
+            return ("Recursos/Imagenes/LluviaLL.gif", "Todo debe ir de acuerdo lo planeado.")
         else:
             return ("Recursos/Imagenes/LluviaLL.gif", "Se recomienda llevar paraguas.")
     
@@ -109,7 +115,7 @@ def obtenerGifyRecomendacion(descripcion, esPrimerDescripcion):
           "shower rain and drizzle" in descripcion or
           "shower drizzle" in descripcion):
         if esPrimerDescripcion:
-            return(("Recursos/Imagenes/LluviaL.gif", "Tu vuelo debe salir a tiempo."))
+            return(("Recursos/Imagenes/LluviaL.gif", "Todo debe ir de acuerdo a lo planeado."))
         else:
             return ("Recursos/Imagenes/LluviaL.gif", "Se recomienda llevar chamarra y paraguas.")
     
@@ -117,7 +123,7 @@ def obtenerGifyRecomendacion(descripcion, esPrimerDescripcion):
            "heavy intensity drizzle" in descripcion or
            "heavy shower rain and drizzle" in descripcion):
         if esPrimerDescripcion:
-            return ("Recursos/Imagenes/LluviaM.gif", "Tu vuelo puede demorarse un poco.")
+            return ("Recursos/Imagenes/LluviaM.gif", "Espere instrucciones de torre de control. Puede haber demoras.")
         else:
             return ("Recursos/Imagenes/LluviaM.gif", "Se recomienda llevar paraguas e impermeable.")
     
@@ -129,9 +135,9 @@ def obtenerGifyRecomendacion(descripcion, esPrimerDescripcion):
            "heavy intensity shower rain" in descripcion or
            "ragged shower rain" in descripcion):
         if esPrimerDescripcion:
-            return (("Recursos/Imagenes/LluviaH.gif", "Tu vuelo se va a demorar o cancelar."))
+            return (("Recursos/Imagenes/LluviaH.gif", "Espere instrucciones de torre de control. Los planes pueden cambiar."))
         else:
-            return ("Recursos/Imagenes/LluviaH.gif", "Se recomienda no salir. A menos que sea necesario, lleva paraguas, impermeable y ten mucha precaución.")
+            return ("Recursos/Imagenes/LluviaH.gif", "Tener extrema precaución al llegar. Llevar impermeable y paraguas.")
     
     elif ("Sleet" in descripcion or
           "Light shower sleet" in descripcion or
@@ -139,16 +145,16 @@ def obtenerGifyRecomendacion(descripcion, esPrimerDescripcion):
           "squalls" in descripcion or
           "freezing rain" in descripcion):
         if esPrimerDescripcion:
-            return ("Recursos/Imagenes/AguaNieve.gif", "Tu vuelo debe salir a tiempo.")
+            return ("Recursos/Imagenes/AguaNieve.gif", "Todo debe ir de acuerdo al plan.")
         else:
             return ("Recursos/Imagenes/AguaNieve.gif", "Se recomienda llevar abrigo y paraguas.")
     
     elif ("light snow" in descripcion or
           "Snow" in descripcion):
         if esPrimerDescripcion:
-            return ("Recursos/Imagenes/NevandoL.gif", "Tu vuelo debe salir a tiempo.")
+            return ("Recursos/Imagenes/NevandoL.gif", "Todo debe ir de acuerdo al plan.")
         else:
-            return ("Recursos/Imagenes/NevandoL.gif", "Se recomienda ir abrigado y tener precaución.")
+            return ("Recursos/Imagenes/NevandoL.gif", "Deben tener precaución e ir abrigados.")
     
     elif ("Heavy snow" in descripcion or
           "Light rain and snow" in descripcion or
@@ -157,19 +163,19 @@ def obtenerGifyRecomendacion(descripcion, esPrimerDescripcion):
           "Shower snow" in descripcion or
           "Heavy shower snow" in descripcion):
         if esPrimerDescripcion:
-            return (("Recursos/Imagenes/Nevando.gif", "Tu vuelo se va a demorar o reprogramar."))
+            return (("Recursos/Imagenes/Nevando.gif", "Esperar instrucciones de la torre de control."))
         else:
-            return ("Recursos/Imagenes/Nevando.gif", "Se recomienda no salir. En dado caso, ir abrigado y llevar el equipo necesario.")
+            return ("Recursos/Imagenes/Nevando.gif", "Tener extrema precaución al llegar allá. Ir abrigados.")
     
     elif ("tornado" in descripcion):
         if esPrimerDescripcion:
-            return (("Recursos/Imagenes/Tornado.gif", "Tu vuelo se va a cancelar, se debe de reprogramar."))
+            return (("Recursos/Imagenes/Tornado.gif", "Debe de haber un cambio de planes."))
         else:
-            return ("Recursos/Imagenes/Tornado.gif", "Ten extrema precaución, no salgas, busca refugio, preferentemente sotanos.")
+            return ("Recursos/Imagenes/Tornado.gif", "Considere un cambio de ruta y mantener la calma de la tripulación.")
     
     elif ("clear sky" in descripcion):
         if esPrimerDescripcion:
-            return ("Recursos/Imagenes/Despejado.jpg", "Tu vuelo debe salir a tiempo.")
+            return ("Recursos/Imagenes/Despejado.jpg", "Todo debe ir de aucerdo a lo planeado")
         else:
             return ("Recursos/Imagenes/Despejado.jpg", "Disfruta, si la temperatura lo permite :).")
     
@@ -179,26 +185,26 @@ def obtenerGifyRecomendacion(descripcion, esPrimerDescripcion):
           "fog" in descripcion or
           "dust" in descripcion):
         if esPrimerDescripcion:
-            return (("Recursos/Imagenes/Neblina.gif", "Tu vuelo se puede demorar."))
+            return (("Recursos/Imagenes/Neblina.gif", "Esperar instrucciones de la torre de control. Puede haber demoras."))
         else:
-            return ("Recursos/Imagenes/Neblina.gif", "Ten extrema precaución. Si es posible no te desplazes.")
+            return ("Recursos/Imagenes/Neblina.gif", "Puede haber demoras al llegar allá. Tener precaución.")
     
     elif ("sand" in descripcion or
           "dust whirls" in descripcion):
         if esPrimerDescripcion:
-            return (("Recursos/Imagenes/Arena.gif", "Tu vuelo se va a demorar."))
+            return (("Recursos/Imagenes/Arena.gif", "Los planes pueden cambiar."))
         else:
-            return ("Recursos/Imagenes/Arena.gif", "Se recomienda permanecer en interiores. Usa mascarilla y un protector para los ojos si vas a salir." )
+            return ("Recursos/Imagenes/Arena.gif", "Tener extrema precaución. Cubrir la cara con mascarillas y usar protectores para los ojos." )
     
     elif ("volcanic ash" in descripcion):
         if esPrimerDescripcion:
-            return ("Recursos/Imagenes/Ceniza.gif", "Tu vuelo se va a demorar, reprogramarse o incluso cancelarse.")
+            return ("Recursos/Imagenes/Ceniza.gif", "Los planes van a cambiar.")
         else:
-            return ("Recursos/Imagenes/Ceniza.gif", "Se recomienda permanecer en interiores. Si vas a salir usa mascarillas y protectores para los ojos." )
+            return ("Recursos/Imagenes/Ceniza.gif", "Considerar un cambio de ruta. Cubrir la cara con mascarilla y usar protectores para los ojos." )
     
     elif("few clouds" in descripcion):
         if esPrimerDescripcion:
-            return ("Recursos/Imagenes/NubladoL.jpg", "Tu vuelo debe salir a tiempo.")
+            return ("Recursos/Imagenes/NubladoL.jpg", "Todo debe ir de acuerdo a lo planeado.")
         else:
             return ("Recursos/Imagenes/NubladoL.jpg", "No se requiere precaución especial.")
     
@@ -212,13 +218,13 @@ def obtenerGifyRecomendacion(descripcion, esPrimerDescripcion):
         if esPrimerDescripcion:
             return ("Recursos/Imagenes/NubladoM.jpg", "Tu vuelo debe salir a tiempo.")
         else:
-            return ("Recursos/Imagenes/NubladoM.jpg", "No se requiere precaución especial.")
+            return ("Recursos/Imagenes/NubladoM.jpg", "Precaución con la visibilidad y posibles turbulencias..")
     
     elif("overcast clouds" in descripcion):
         if esPrimerDescripcion:
             return ("Recursos/Imagenes/NubladoH.gif", "Tu vuelo debe salir a tiempo.")
         else:
-            return ("Recursos/Imagenes/NubladoH.gif", "No se requiere precaución especial.")
+            return ("Recursos/Imagenes/NubladoH.gif", "Precaución con la visibilidad y posibles turbulencias.")
     
     else: 
         return ("Recursos/Imagenes/Default.gif", "...")
@@ -325,17 +331,17 @@ def obtenerRecomendacionTemp(temperatura):
     (String): Recomendación dada a base de la temperatura.
     '''
     if temperatura < 1:
-        return "Hace demasiado frío, ve lo más abrigado posible y usa ropa térmica."
+        return "Se debera llevar el todo equipo posible para mantenerse abrigados."
     elif 1 <= temperatura <= 10:
-        return "Hace bastante frío, usa chamarra."
+        return "Se debera llevar chamarra."
     elif 10 <= temperatura <= 16:
-        return "Es un clima fresco, lleva una chaqueta."
+        return "Se recomienda hacer uso de chaquetas."
     elif 16 <= temperatura <= 22:
-        return "Es un clima agradable, usa ropa ligera."
+        return "Se recomienda usar ropa ligera."
     elif 22 <= temperatura <= 29:
-        return "Es un clima calido, ve con ropa fresca."
+        return "Se recomienda llevar ropa fresca."
     elif temperatura >= 30:
-        return "Hace demasiado calor, usa ropa fresca y mantente hidratado."
+        return "Se debera llevar ropa fresca y mantenerse hidratados."
     else:
         return "No se requiere precaución especial."
      
@@ -394,13 +400,22 @@ def procesar():
     datos['estado_origen'] = estado
     datos['gif_origen'] = gifOrigen
     datos['clima_origen']['descripcion_traducida'] = traducirDescripcion(clima_origen['descripcion'])
-
+    datos['clima_origen']['visibilidad'] = clima_origen.get('visibilidad', 'No disponible')
+    datos['clima_origen']['velocidad_viento'] = clima_origen.get('velocidad_viento', 'No disponible')
+    datos['clima_origen']['direccion_viento'] = clima_origen.get('direccion_viento', 'No disponible')
+    datos['clima_origen']['presion'] = clima_origen.get('presion', 'No disponible')
+    datos['clima_origen']['humedad'] = clima_origen.get('humedad', 'No disponible')
 
     datos['clima_destino'] = clima_destino
     datos['gif_destino'] = gifDestino
     datos['recomendacion_destino'] = recomendacion
     datos['clima_destino']['descripcion_traducida'] = traducirDescripcion(clima_destino['descripcion'])
     datos['recomendacion_temp_destino'] = obtenerRecomendacionTemp(clima_destino['temperatura'])
+    datos['clima_destino']['visibilidad'] = clima_destino.get('visibilidad', 'No disponible')
+    datos['clima_destino']['velocidad_viento'] = clima_destino.get('velocidad_viento', 'No disponible')
+    datos['clima_destino']['direccion_viento'] = clima_destino.get('direccion_viento', 'No disponible')
+    datos['clima_destino']['presion'] = clima_destino.get('presion', 'No disponible')
+    datos['clima_destino']['humedad'] = clima_destino.get('humedad', 'No disponible')
 
     session['datos'] = datos
     return redirect(url_for('resultado'))
@@ -414,15 +429,27 @@ def resultado():
     El lugar en el que se presentan los datos ya procesados.
     '''
     datos = session.get('datos', {})
-    return render_template('FrontPublico.html', datos = datos)
+    return render_template('EquipoVuelo.html', datos = datos)
 
 @app.route('/error')
 def error_page():
+    '''
+    Función que activa la página de errores.
+
+    Retorno:
+    El sitio donde muestra el error.
+    '''
     error_message = request.args.get('error_message', 'Unknown error')
     return render_template('error.html', error_message=error_message)
 
 @app.route('/prueba_error')
 def prueba_error():
+    '''
+    Función prueba de error_page
+
+    Retorno:
+    Verifica que existe la página de errores.
+    '''
     return redirect(url_for('error_page', error_message="Este es un error de prueba."))
 
 if __name__ == '__main__':

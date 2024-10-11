@@ -238,3 +238,27 @@ button:disabled{
 .headt{
 	font-family: 'Trebuchet MS', sans-serif;
 }
+
+.clima-cajaPi{
+	width: 720px;
+	height: 720px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	border: 2px solid #424242;
+	border-radius: 50%;
+	padding: 10px;
+	box-sizing: border-box;
+	text-align: center;
+	background-size: cover;
+	background-position: center;
+	font-size: 21px;
+	overflow: hidden;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+	opacity: .8;
+	color: rgb(37, 36, 36);
+}
+
+

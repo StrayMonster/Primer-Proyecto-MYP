@@ -10,7 +10,7 @@
     <center><titulo> Weathering </titulo></center>
     <ul>
         <main-header>
-            <li><img src="{{url_for('static', filename= 'Recursos/Imagenes/Maleta.jpeg')}}" width="55" height="44">
+            <li><img src="{{url_for('static', filename= 'Recursos/Imagenes/LogoAv.webp')}}" width="55" height="44">
             <li class="headt"><a href="{{url_for('index')}}"> Inicio </a></li>
         </main-header>
     </ul>
@@ -19,22 +19,32 @@
     <main>
         <br>
     <div class = "clima-container">
-        <div class="clima-caja" style="background-image: url('{{ url_for('static', filename=datos['gif_origen']) }}');">
+        <div class="clima-cajaPi" style="background-image: url('{{ url_for('static', filename=datos['gif_origen']) }}');">
             <h2 class="texto-recuadro">Origen: {{ datos.origen }}</h2>
             <p class="texto-recuadro">Descripción: {{ datos.clima_origen.descripcion_traducida }}</p>
             <p class="texto-recuadro">Estado: {{datos.estado_origen}}</p>
             <p class="texto-recuadro">Temperatura: {{ datos.clima_origen.temperatura }} °C</p>
             <p class="texto-recuadro">Sensacion Térmica: {{ datos.clima_origen.sensacion_termica}} °C<br>
+            <p class="texto-recuadro">Visibilidad: {{datos.clima_origen.visibilidad}} m.</p>    
+            <p class="texto-recuadro">Velocidad Viento: {{datos.clima_origen.velocidad_viento}} m/s</p>
+            <p class="texto-recuadro">Dirección Viento: {{datos.clima_origen.direccion_viento}} °</p> 
+            <p class="texto-recuadro">Presion: {{datos.clima_origen.presion}} mb</p>
+            <p class="texto-recuadro">Humedad: {{datos.clima_origen.humedad}} %</p>
+
         
         </div>
-        <div class = "clima-caja" style="background-image: url('{{ url_for('static', filename=datos['gif_destino']) }}');">
+        <div class = "clima-cajaPi" style="background-image: url('{{ url_for('static', filename=datos['gif_destino']) }}');">
             <h2 class="texto-recuadro">Destino: {{ datos.destino }}</h2>
             <p class="texto-recuadro">Descripción: {{ datos.clima_destino.descripcion_traducida }}</p>
-            <p class="texto-recuadro">Recomendación por temperatura: {{datos.recomendacion_temp_destino }}</p>
-            <p class="texto-recuadro">Recomendación: {{datos.recomendacion_destino}}</p>
             <p class="texto-recuadro">Temperatura: {{ datos.clima_destino.temperatura }} °C</p>
             <p class="texto-recuadro">Sensacion Térmica: {{ datos.clima_destino.sensacion_termica}} °C</p>
-
+            <p class="texto-recuadro">Recomendación Temperatura: {{datos.recomendacion_temp_destino }}</p>
+            <p class="texto-recuadro">Recomendación: {{datos.recomendacion_destino}}</p>
+            <p class="texto-recuadro">Visibilidad: {{datos.clima_destino.visibilidad}} m.</p>    
+            <p class="texto-recuadro">Velocidad Viento: {{datos.clima_destino.velocidad_viento}} m/s</p>
+            <p class="texto-recuadro">Dirección Viento: {{datos.clima_destino.direccion_viento}} °</p> 
+            <p class="texto-recuadro">Presion: {{datos.clima_destino.presion}} mb</p>  
+            <p class="texto-recuadro">Humedad: {{datos.clima_destino.humedad}} %</p>
         </div>
     </div>
     </main>

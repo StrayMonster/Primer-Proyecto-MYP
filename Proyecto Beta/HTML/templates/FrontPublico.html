@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="shortcut icon" type="image.png" href="{{url_for('static', filename='Recursos/Imagenes/Icono.ico')}}"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width", initial-scale="1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='Recursos/style.css')}}">
+    <script src="{{url_for('static', filename= 'Recursos/funciones.js')}}" defer></script>
+    <br><br><br>
+    <center><titulo> Weathering </titulo></center>
+    <ul>
+        <main-header>
+            <li><img src="{{url_for('static', filename= 'Recursos/Imagenes/Maleta.jpeg')}}" width="55" height="44">
+            <li class="headt"><a href="{{url_for('index')}}"> Inicio </a></li>
+        </main-header>
+    </ul>
+</head>
+<body>    
+    <main>
+        <br>
+    <div class = "clima-container">
+        <div class="clima-caja" style="background-image: url('{{ url_for('static', filename=datos['gif_origen']) }}');">
+            <h2 class="texto-recuadro">Origen: {{ datos.origen }}</h2>
+            <p class="texto-recuadro">Descripción: {{ datos.clima_origen.descripcion_traducida }}</p>
+            <p class="texto-recuadro">Estado: {{datos.estado_origen}}</p>
+            <p class="texto-recuadro">Temperatura: {{ datos.clima_origen.temperatura }} °C</p>
+            <p class="texto-recuadro">Sensacion Térmica: {{ datos.clima_origen.sensacion_termica}} °C<br>
+        
+        </div>
+        <div class = "clima-caja" style="background-image: url('{{ url_for('static', filename=datos['gif_destino']) }}');">
+            <h2 class="texto-recuadro">Destino: {{ datos.destino }}</h2>
+            <p class="texto-recuadro">Descripción: {{ datos.clima_destino.descripcion_traducida }}</p>
+            <p class="texto-recuadro">Recomendación por temperatura: {{datos.recomendacion_temp_destino }}</p>
+            <p class="texto-recuadro">Recomendación: {{datos.recomendacion_destino}}</p>
+            <p class="texto-recuadro">Temperatura: {{ datos.clima_destino.temperatura }} °C</p>
+            <p class="texto-recuadro">Sensacion Térmica: {{ datos.clima_destino.sensacion_termica}} °C</p>
+        </div>
+    </div>
+    </main>
+    <footer>
+        &copy; Weathering 2024. Todos los derechos reservados.<br>
+        Gracias por su preferencia.
+    </footer>
+</body>
+</html>
+
